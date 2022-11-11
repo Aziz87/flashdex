@@ -1,6 +1,6 @@
-# dex-fast-buyer
+# FlashDex
 
-This template should help get you started developing with Vue 3 in Vite.
+Panckake scanner for new tokens
 
 ## Recommended IDE Setup
 
