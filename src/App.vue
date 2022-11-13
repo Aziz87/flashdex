@@ -2,15 +2,16 @@
   <div>
     <header-bar v-model="filters"/>
     <div class="flex">
-        <tokens v-model="token" :filters="filters" :network="network" @showAccounts="(val)=>showAccounts=val"/>
+      <tokens v-model="token" :filters="filters" :network="network" @showAccounts="(val)=>showAccounts=val"/>
       <div id="charts" :class="token?'tokenExist':''">
-        <token-bar id="token-bar" v-if="token" :network="network" :token="token" @cancel="token=undefined"/>
-        <chart v-if="token" :token="token" id="chart" :key="token.address+token.selectedPairIndex"/>
+        <token-bar v-if="token" id="token-bar" :network="network" :token="token" @cancel="token=undefined"/>
+        <chart v-if="token" id="chart" :key="token.address+token.selectedPairIndex" :token="token"/>
         <div v-else class="only_desktop">
           <h1>Select token</h1>
         </div>
       </div>
-      <accounts :class="{show:showAccounts}" id="accounts" :network="network" :token="token" class="w100" @showAccounts="(val)=>showAccounts=val"/>
+      <accounts id="accounts" :class="{show:showAccounts}" :network="network" :token="token" class="w100"
+                @showAccounts="(val)=>showAccounts=val"/>
     </div>
   </div>
 </template>
@@ -46,15 +47,15 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-#tokens{
+#tokens {
   padding: 0 0 0 10px;
   min-width: 100%;
   max-width: 100%;
   overflow-x: hidden;
   border: 1px solid #eee;
-  @media(min-width: 601px){
-    max-width:30%;
-    min-width:30%;
+  @media(min-width: 601px) {
+    max-width: 30%;
+    min-width: 30%;
   }
 }
 
@@ -74,12 +75,13 @@ export default {
     max-width: 100%;
   }
 }
-#accounts{
+
+#accounts {
   min-width: calc(30% - 20px);
   max-width: calc(30% - 20px);
-  @media(max-width: 600px){
+  @media(max-width: 600px) {
     display: none;
-    &.show{
+    &.show {
       display: block;
       position: absolute;
       left: 0;
@@ -87,20 +89,21 @@ export default {
       width: 100vw;
       min-width: 100vw;
       z-index: 5;
-      min-height: 100vh!important;
+      min-height: 100vh !important;
       background: white;
     }
   }
 }
+
 @media(max-width: 600px) {
-  #charts{
+  #charts {
     &.tokenExist {
       position: absolute;
       left: 0;
       top: 0;
       width: 100vw;
       z-index: 5;
-      min-height: 100vh!important;
+      min-height: 100vh !important;
       background: white;
     }
   }

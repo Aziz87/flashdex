@@ -105,8 +105,8 @@ export default {
     let timeoutReserves: number = 0;
     let toBlock: number = 0;
     let currentBlock: number = 0;
-    let maxBlockOffset: number = 3000;
-    let offset: number = 3000;
+    let maxBlockOffset: number = 2500;
+    let offset: number = 2500;
     let skipEmptyTokens:boolean = false;
     return {
       tokens,

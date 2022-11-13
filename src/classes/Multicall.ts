@@ -36,7 +36,7 @@ const multiCall = async function (items: MultiCallItem[], network: Network): Pro
             console.error('Ups... multicall error...');
         });
     } catch (err: any) {
-        console.error('multicall error');
+        console.error('multicall error', err);
     }
 
     const result: any = {}
